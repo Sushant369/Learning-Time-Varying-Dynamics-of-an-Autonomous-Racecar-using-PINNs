@@ -1,7 +1,8 @@
 # Project Name: Learning-Time-Varying-Dynamics-of-an-Autonomous-Racecar-using-PINNs
 
-### Course: EXEC 689 - Scientific Machine Learning
+### Course: ECEN 689 - Scientific Machine Learning
 ### Instructor: Dr. Ulisses Braga-Neto
+### University Name: Texas A&M University, College Station
 
 ### Repository Maintained by:
 - Sushant Vijay Shelar (UIN: 733001479)
