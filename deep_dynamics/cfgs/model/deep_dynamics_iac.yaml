@@ -4,6 +4,8 @@ STATE:
   - YAW_RATE
   - THROTTLE_FB
   - STEERING_FB
+  - WHEELF_AVG
+  - WHEELR_AVG
 ACTIONS:
   - THROTTLE_CMD
   - STEERING_CMD
@@ -59,27 +61,52 @@ PARAMETERS:
   - Svr:
     Min: -300.0
     Max: 300.0
+  - Bf_l: #same
+    Min: 5.0
+    Max: 30.0
+  - Cf_l: #same
+    Min: 0.5
+    Max: 2.0
+  - Df_l: #same
+    Min: 100.0
+    Max: 10000.0
+  - Ef_l: ########changes
+    Min: -10.0
+    Max: 0.0
+  - Br_l:
+    Min: 5.0
+    Max: 30.0
+  - Cr_l:
+    Min: 0.5
+    Max: 2.0
+  - Dr_l:
+    Min: 100.0
+    Max: 10000.0
+  - Er_l: #######changes
+    Min: -10.0
+    Max: 0.0
+
 VEHICLE_SPECS:
   lf: 1.248
   lr: 1.7328
   mass: 790.0
+  wheel_radius: 0.254
 MODEL:
   NAME: DeepDynamicsIAC
   HORIZON: 15
   LAYERS:
-    - DENSE:
+    - GRU:
       OUT_FEATURES: 225
-      ACTIVATION: Tanh
-      # LAYERS: 3
+      LAYERS: 3
     - DENSE:
       OUT_FEATURES: 188
-      ACTIVATION: Tanh
+      ACTIVATION: Mish
     - DENSE:
       OUT_FEATURES: 188
-      ACTIVATION: Tanh
+      ACTIVATION: Mish
   OPTIMIZATION:
     LOSS: MSE
-    BATCH_SIZE: 208
-    NUM_EPOCHS: 400
+    BATCH_SIZE: 128
+    NUM_EPOCHS: 40
     OPTIMIZER: Adam
     LR: 0.001

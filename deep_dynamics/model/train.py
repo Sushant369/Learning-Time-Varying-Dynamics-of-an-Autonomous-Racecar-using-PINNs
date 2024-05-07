@@ -1,5 +1,5 @@
 import sys
-sys.path.append('C:\\Users\\susha\Documents\\Sci-ML-Project\\deep-dynamics')
+sys.path.append('C:\\Users\\susha\Documents\\Sci-ML-Project\\deep-dynamics\Round2\deep-dynamics')
 import wandb
 from ray import train as raytrain
 from deep_dynamics.model.models import DeepDynamicsModel, DeepDynamicsDataset, DeepPacejkaModel
@@ -61,11 +61,9 @@ def train(model, train_data_loader, val_data_loader, experiment_name, log_wandb,
             model.zero_grad()
             if model.is_rnn:
                 output, h, _ = model(inputs, norm_inputs, h)
+                # print(output)
             else:
                 output, _, _ = model(inputs, norm_inputs)
-            # print("################Labels from training########################")
-            # print(labels)
-            # print("##############################################################")
             loss = model.weighted_mse_loss(output, labels, weights).mean()
             train_loss_accum += loss.item()
             train_steps += 1
@@ -129,10 +127,7 @@ if __name__ == "__main__":
     with open(argdict["model_cfg"], 'rb') as f:
         param_dict = yaml.load(f, Loader=yaml.SafeLoader)
     model = string_to_model[param_dict["MODEL"]["NAME"]](param_dict)
-    print("model: ",model)
     data_npy = np.load(argdict["dataset"])
-    print("#######Dataset###############")
-    print(data_npy["features"])
     dataset = string_to_dataset[param_dict["MODEL"]["NAME"]](data_npy["features"], data_npy["labels"])
     if not os.path.exists("../output"):
         os.mkdir("../output")

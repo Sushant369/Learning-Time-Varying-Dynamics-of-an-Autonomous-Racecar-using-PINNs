@@ -44,9 +44,21 @@ def write_dataset(csv_path, horizon, save=True):
                 throttle = -brake / MAX_BRAKE_PRESSURE
             else:
                 throttle =  float(row[column_idxs["throttle_ped_cmd"]]) / 100.0
+####################code changes
+            wheel_fl = float(row[column_idxs["wheel_fl"]])
+            wheel_fr = float(row[column_idxs["wheel_fr"]])
+            wheel_rl = float(row[column_idxs["wheel_rl"]])
+            wheel_rr = float(row[column_idxs["wheel_rr"]])
+
+            wheelf_avg = (wheel_fl + wheel_fr) /2
+            wheelr_avg = (wheel_rl + wheel_rr) /2
+##############################
             steering_cmd = steering - previous_steer
             throttle_cmd = throttle - previous_throttle
-            odometry.append(np.array([vx, vy, vtheta, throttle, steering]))
+
+############code changes####################
+            odometry.append(np.array([vx, vy, vtheta, throttle, steering, wheelf_avg, wheelr_avg]))
+###################################            
             poses.append([float(row[column_idxs["x"]]), float(row[column_idxs["y"]]), float(row[column_idxs["phi"]]), vx, vy, vtheta, throttle, steering])
             previous_throttle += throttle_cmd
             previous_steer += steering_cmd
@@ -57,7 +69,7 @@ def write_dataset(csv_path, horizon, save=True):
         odometry = np.array(odometry)
         throttle_cmds = np.array(throttle_cmds)
         steering_cmds = np.array(steering_cmds)
-        features = np.zeros((len(throttle_cmds) - horizon - 1,  horizon, 8), dtype=np.double)
+        features = np.zeros((len(throttle_cmds) - horizon - 1,  horizon, 10), dtype=np.double) ########code change here
         labels = np.zeros((len(throttle_cmds) - horizon - 1, 3), dtype=np.double)
         for i in tqdm(range(len(throttle_cmds) - horizon - 1 - 5), desc="Compiling dataset"):
             features[i] = np.array([*odometry[i:i+horizon].T, throttle_cmds[i:i+horizon], steering_cmds[i:i+horizon], odometry[i+5:i+horizon+5,0]]).T
