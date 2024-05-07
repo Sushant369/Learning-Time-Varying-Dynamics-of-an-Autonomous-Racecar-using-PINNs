@@ -1,5 +1,15 @@
-# Deep Dynamics
+# Project Name: Learning-Time-Varying-Dynamics-of-an-Autonomous-Racecar-using-PINNs
 
+### Course: ECEN 689 - Scientific Machine Learning
+### Instructor: Dr. Ulisses Braga-Neto
+### University Name: Texas A&M University, College Station
+
+### Repository Maintained by:
+- Sushant Vijay Shelar (UIN: 733001479)
+- Mohini Priya Kolluri (UIN: 734004070)
+
+
+## Introduction 
 Deep Dynamics is a physics-informed neural network (PINN) designed to model the complex dynamics observed in a high-speed, competitive racing environment. Using a historical horizon of the vehicle's state and control inputs, Deep Dynamics learns to produce accurate coefficient estimates for a dynamic single-track model that best describes the vehicle's motion. Specifically, this includes Pacejka Magic Formula coefficients for the front and rear wheels, coefficients for a linear drivetrain model, and the vehicle's moment of inertia. The Physics Guard layer ensures that estimated coefficients always lie within their physically-meaningful range, determined by the meaning behind each coefficient.
 
 ## Installation
@@ -113,7 +123,7 @@ You can cite this work using:
 }
 ```
 
-References:
+## References:
 - https://github.com/linklab-uva/deep-dynamics/tree/main
 - https://libraetd.lib.virginia.edu/public_view/qr46r2095
 - https://arxiv.org/pdf/2312.04374v1
