@@ -110,20 +110,27 @@ cd deep_dynamics/model/
 python3 test_hyperparameters.py {path to cfg}
 ```
 
-You can cite this work using:
 
-```
+
+## Acknowledgments
+
+This project utilizes concepts and methodologies from the following research work:
+
+- **Deep Dynamics: Vehicle Dynamics Modeling with a Physics-Informed Neural Network for Autonomous Racing** by John Chrosniak, Jingyun Ning, and Madhur Behl (2023). This foundational research significantly influenced the development of our model's architecture and capabilities. The detailed citation for their work is provided below:
+
 @misc{chrosniak2023deep,
-      title={Deep Dynamics: Vehicle Dynamics Modeling with a Physics-Informed Neural Network for Autonomous Racing}, 
-      author={John Chrosniak and Jingyun Ning and Madhur Behl},
-      year={2023},
-      eprint={2312.04374},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO}
+title={Deep Dynamics: Vehicle Dynamics Modeling with a Physics-Informed Neural Network for Autonomous Racing},
+author={John Chrosniak and Jingyun Ning and Madhur Behl},
+year={2023},
+eprint={2312.04374},
+archivePrefix={arXiv},
+primaryClass={cs.RO}
 }
-```
 
-## References:
-- https://github.com/linklab-uva/deep-dynamics/tree/main
-- https://libraetd.lib.virginia.edu/public_view/qr46r2095
-- https://arxiv.org/pdf/2312.04374v1
+
+## References
+- **Deep Dynamics Model**: Developed by the LINK Lab at the University of Virginia. The codebase provided insights and foundational code for our dynamics modeling component. [View the repository](https://github.com/linklab-uva/deep-dynamics/tree/main).
+
+- **Ph.D. Thesis on Deep Learning Dynamics**: This thesis from the University of Virginia's digital repository influenced our theoretical approach to machine learning model architecture. [Access the thesis](https://libraetd.lib.virginia.edu/public_view/qr46r2095).
+
+- **Research Paper on Dynamics Prediction**: This paper provided crucial background and validation of the concepts we've implemented in our project. [Read the paper](https://arxiv.org/pdf/2312.04374v1).
